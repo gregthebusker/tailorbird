@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/gregthebusker/tailorbird#readme",
   "dependencies": {
-    "babel": "^6.0.15",
+    "babel": "^6.1.5",
     "babel-core": "^6.1.4",
     "babel-loader": "^6.1.0",
     "babel-plugin-transform-react-constant-elements": "^6.1.4",
@@ -36,6 +36,7 @@
     "webpack-config-merger": "0.0.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.1.4",
     "babel-jest": "^5.3.0",
     "eslint": "^1.7.1",
     "eslint-plugin-react": "^3.5.1",
@@ -56,5 +57,5 @@
       "./node_modules/",
       "./src"
     ]
-  },
+  }
 }
