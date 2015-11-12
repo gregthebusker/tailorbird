@@ -1,14 +1,14 @@
 module.exports = (style, child, index, length) => {
-    var firstChildStyles = style[':first-child'];
+    var lastChildStyles = style[':last-child'];
     var newStyle = {
         ...style,
     };
-    delete newStyle[':first-child'];
+    delete newStyle[':last-child'];
 
-    if (index == 0 && firstChildStyles) {
+    if (index == length - 1 && lastChildStyles) {
         newStyle = {
             ...newStyle,
-            ...firstChildStyles,
+            ...lastChildStyles,
         };
     }
     return newStyle;

@@ -1,12 +1,13 @@
 var React = require('react');
-var Tailorbird = require('index');
+var Tailorbird = require('./index.js');
 
 var ListItem = (props) => {
     var style = {
         width: 200,
         height: 200,
         ...props.style,
-    }
+    };
+
     return (
         <div
             className="test-list-item"
@@ -17,7 +18,10 @@ var ListItem = (props) => {
 
 var PseudoTestApp = React.createClass({
     render() {
-        var items = Array(5).map(() => <ListItem>);
+        var items = [];
+        for (var i = 0; i < 5; i++) {
+            items.push(<ListItem />);
+        }
         return (
             <div>
                 {Tailorbird.Children.mapStyles(items, {
