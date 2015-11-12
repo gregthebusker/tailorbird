@@ -1,0 +1,19 @@
+{
+  "name": "tailorbird",
+  "version": "0.0.1",
+  "description": "A powerfull tool for doing inline styles and themes in React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gregthebusker/tailorbird.git"
+  },
+  "author": "Greg Schechter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gregthebusker/tailorbird/issues"
+  },
+  "homepage": "https://github.com/gregthebusker/tailorbird#readme"
+}
