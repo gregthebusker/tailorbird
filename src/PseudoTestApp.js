@@ -32,6 +32,12 @@ var PseudoTestApp = React.createClass({
                     ':last-child': {
                         backgroundColor: 'red',
                     },
+
+                    ':not': {
+                        ':first-child': {
+                            color: 'yellow',
+                        },
+                    },
                 })}
             </div>
         );

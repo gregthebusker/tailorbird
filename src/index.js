@@ -1,26 +1,32 @@
 var React = require('react');
-var firstChild = require('./pseudo-reducers/first-child.js');
-var lastChild = require('./pseudo-reducers/last-child.js');
-
-var pseudoReducers = [firstChild, lastChild];
+var PseudoReducers = require('./pseudo-reducers/pseudo-reducers.js');
 
 var Tailorbird = () => {};
 
 Tailorbird.Children = {
     mapStyles: (children, style) => {
-        var len = children.length;
-        return children.map((c, i) => {
+        return children.map((c, index) => {
             var originalStyle = c.props.style;
 
-            var newStyle = pseudoReducers.reduce((previousStyle, reducer) => {
-                if (reducer.shouldApplyStyle(previousStyle, c, i, len)) {
-                    previousStyle = reducer.applyStyle(previousStyle, c, i, len);
+            var newStyle = PseudoReducers.reduce((previousStyle, reducer) => {
+                var args = {
+                    style: previousStyle,
+                    children,
+                    index,
+                    reducers: PseudoReducers,
+                };
+
+                if (reducer.hasTag(args) && reducer.shouldApplyStyle(args)) {
+                    args = {
+                        ...args,
+                        style: reducer.applyStyle(args),
+                    };
                 }
-                return reducer.cleanUp(previousStyle, c, i, len);
+                return reducer.cleanUp(args);
             }, style);
 
             return React.cloneElement(c, {
-                key: c.props.key || i,
+                key: c.props.key || index,
                 style: {
                     ...originalStyle,
                     ...newStyle,

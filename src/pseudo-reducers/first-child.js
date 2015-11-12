@@ -1,18 +1,22 @@
 module.exports = {
-    shouldApplyStyle: (style, child, index, length) => {
-        return index == 0 && style[':first-child'];
+    hasTag: (args) => {
+        return args.style[':first-child'];
     },
 
-    applyStyle: (style, child, index, length) => {
+    shouldApplyStyle: (args) => {
+        return args.index == 0;
+    },
+
+    applyStyle: (args) => {
         return {
-            ...style,
-            ...style[':first-child'],
+            ...args.style,
+            ...args.style[':first-child'],
         };
     },
 
-    cleanUp: (style, child, index, length) => {
+    cleanUp: (args) => {
         var newStyle = {
-            ...style,
+            ...args.style,
         };
         delete newStyle[':first-child'];
         return newStyle;

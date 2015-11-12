@@ -24,4 +24,12 @@ describe('Pseudo App Tests', () => {
         expect(div.style.backgroundColor).toEqual('red');
         expect(div2.style.backgroundColor).toNotEqual('red');
     });
+
+    it('Not first child renders correctly', () => {
+        var components = TestUtils.scryRenderedDOMComponentsWithClass(dom, 'test-list-item');
+        var div = ReactDOM.findDOMNode(components[0]);
+        var div2 = ReactDOM.findDOMNode(components[1]);
+        expect(div.style.color).toNotEqual('yellow');
+        expect(div2.style.color).toEqual('yellow');
+    });
 });
