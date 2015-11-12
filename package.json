@@ -1,6 +1,6 @@
 {
   "name": "tailorbird",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A powerfull tool for doing inline styles and themes in React.",
   "main": "./lib/index.js",
   "scripts": {
