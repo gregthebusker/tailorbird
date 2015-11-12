@@ -13,7 +13,10 @@ Tailorbird.Children = {
             var originalStyle = c.props.style;
 
             var newStyle = pseudoReducers.reduce((previousStyle, reducer) => {
-                return reducer(previousStyle, c, i, len);
+                if (reducer.shouldApplyStyle(previousStyle, c, i, len)) {
+                    previousStyle = reducer.applyStyle(previousStyle, c, i, len);
+                }
+                return reducer.cleanUp(previousStyle, c, i, len);
             }, style);
 
             return React.cloneElement(c, {

@@ -1,15 +1,20 @@
-module.exports = (style, child, index, length) => {
-    var lastChildStyles = style[':last-child'];
-    var newStyle = {
-        ...style,
-    };
-    delete newStyle[':last-child'];
+module.exports = {
+    shouldApplyStyle: (style, child, index, length) => {
+        return index == length - 1 && style[':last-child'];
+    },
 
-    if (index == length - 1 && lastChildStyles) {
-        newStyle = {
-            ...newStyle,
-            ...lastChildStyles,
+    applyStyle: (style, child, index, length) => {
+        return {
+            ...style,
+            ...style[':last-child'],
         };
-    }
-    return newStyle;
+    },
+
+    cleanUp: (style, child, index, length) => {
+        var newStyle = {
+            ...style,
+        };
+        delete newStyle[':last-child'];
+        return newStyle;
+    },
 };
