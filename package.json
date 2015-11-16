@@ -22,12 +22,6 @@
     "url": "https://github.com/gregthebusker/tailorbird/issues"
   },
   "homepage": "https://github.com/gregthebusker/tailorbird#readme",
-  "dependencies": {
-    "babel": "^6.1.12",
-    "babel-cli": "^6.1.4",
-    "hoist-non-react-statics": "^1.0.3",
-    "radium": "^0.15.1"
-  },
   "devDependencies": {
     "babel": "^6.1.18",
     "babel-cli": "^6.1.18",
