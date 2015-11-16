@@ -7,23 +7,26 @@ Tailorbird.Children = {
     mapStyles: (children, style) => {
         return children.map((c, index) => {
             var originalStyle = c.props.style;
+            var newStyle = {};
 
-            var newStyle = PseudoReducers.reduce((previousStyle, reducer) => {
-                var args = {
-                    style: previousStyle,
-                    children,
-                    index,
-                    reducers: PseudoReducers,
-                };
-
-                if (reducer.hasTag(args) && reducer.shouldApplyStyle(args)) {
-                    args = {
-                        ...args,
-                        style: reducer.applyStyle(args),
-                    };
+            for (var key in style) {
+                if (key.indexOf(':') == 0) {
+                    var tokenized = key.split(':');
+                    tokenized.shift();
+                    if (tokenized.every(token => {
+                        return PseudoReducers.some(r => r(`:${token}`, {
+                            children,
+                            index,
+                        }));
+                    })) {
+                        newStyle = {
+                            ...newStyle,
+                            ...style[key],
+                        };
+                        delete style[key];
+                    }
                 }
-                return reducer.cleanUp(args);
-            }, style);
+            }
 
             return React.cloneElement(c, {
                 key: c.props.key || index,
