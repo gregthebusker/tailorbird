@@ -34,4 +34,14 @@ describe('Pseudo App Tests', () => {
         expect(div2.style.color).toEqual('blue');
         expect(div3.style.color).toEqual('orange');
     });
+
+    it('Renders combo selectors correctly', () => {
+        var components = TestUtils.scryRenderedDOMComponentsWithClass(dom, 'test-list-item');
+        var div = ReactDOM.findDOMNode(components[components.length - 1]);
+        var div2 = ReactDOM.findDOMNode(components[components.length - 2]);
+        var div3 = ReactDOM.findDOMNode(components[components.length - 3]);
+        expect(div.style.borderColor).toEqual('yellow');
+        expect(div2.style.borderColor).toNotEqual('yellow');
+        expect(div3.style.borderColor).toNotEqual('yellow');
+    });
 });
