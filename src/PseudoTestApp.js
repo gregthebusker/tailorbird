@@ -32,6 +32,18 @@ var PseudoTestApp = React.createClass({
                     ':last-child': {
                         backgroundColor: 'red',
                     },
+
+                    ':nth-child(odd)': {
+                        color: 'blue',
+                    },
+
+                    ':nth-child(even)': {
+                        color: 'white',
+                    },
+
+                    ':nth-child(2n+3)': {
+                        color: 'orange'
+                    },
                 })}
             </div>
         );
