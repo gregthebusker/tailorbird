@@ -25,6 +25,8 @@ var PseudoTestApp = React.createClass({
         return (
             <div>
                 {Tailorbird.Children.mapStyles(items, {
+                    borderWidth: '1px',
+
                     ':first-child': {
                         backgroundColor: 'green',
                     },

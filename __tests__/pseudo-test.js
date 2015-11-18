@@ -8,6 +8,14 @@ describe('Pseudo App Tests', () => {
       <App />
     );
 
+    it('Coppies styles correctly', () => {
+        var components = TestUtils.scryRenderedDOMComponentsWithClass(dom, 'test-list-item');
+        var div = ReactDOM.findDOMNode(components[0]);
+        var div2 = ReactDOM.findDOMNode(components[1]);
+        expect(div.style.borderWidth).toEqual('1px');
+        expect(div2.style.borderWidth).toEqual('1px');
+    });
+
     it('Renders first child correctly', () => {
         var components = TestUtils.scryRenderedDOMComponentsWithClass(dom, 'test-list-item');
         var div = ReactDOM.findDOMNode(components[0]);

@@ -5,11 +5,14 @@ var Tailorbird = () => {};
 
 Tailorbird.Children = {
     mapStyles: (children, style) => {
+        var styleCopy = {
+            ...style,
+        };
         return children.map((c, index) => {
             var originalStyle = c.props.style;
             var newStyle = {};
 
-            for (var key in style) {
+            for (var key in styleCopy) {
                 if (key.indexOf(':') == 0) {
                     var tokenized = key.split(':');
                     tokenized.shift();
@@ -21,10 +24,14 @@ Tailorbird.Children = {
                     })) {
                         newStyle = {
                             ...newStyle,
-                            ...style[key],
+                            ...styleCopy[key],
                         };
-                        delete style[key];
                     }
+                } else {
+                    newStyle = {
+                        ...newStyle,
+                        [key]: styleCopy[key],
+                    };
                 }
             }
 
