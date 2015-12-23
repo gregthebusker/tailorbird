@@ -41,7 +41,7 @@
     "react-addons-test-utils": "^0.14.0",
     "react-dom": "^0.14.2",
     "react-hot-loader": "^1.3.0",
-    "rimraf": "^2.3.4",
+    "rimraf": "^2.5.0",
     "webpack": "^1.12.6",
     "webpack-bundle-tracker": "0.0.8",
     "webpack-config-merger": "0.0.3",
